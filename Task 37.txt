@@ -1,0 +1,66 @@
+Task37:Assignments on Number Functions in MySQL
+Task1:Write a query to display the absolute value of salary - 40000 for each employee.
+Task2:Round off employee salaries to the nearest thousand.
+Task3:Display salaries rounded up to the nearest integer.
+Task4:Display salaries rounded down to the nearest integer.
+Task5:Find the remainder when salary is divided by 5000.
+Task6:Display the square of each employee’s salary (salary²).
+Task7:Find the square root of each salary.
+Task8:Show whether salary is positive, negative, or zero.
+Task9:Truncate salary values to 2 decimal places.
+Task10:Generate a random number between 0 and 1 for each employee.
+
+use ycpdb;
+CREATE TABLE employeess2(
+	emp_id INT PRIMARY KEY,
+    ename VARCHAR(50),
+    salary DECIMAL(10,2)
+);
+INSERT INTO employeess2(emp_id,ename,salary)VALUES
+(1,"Chaitali",38500.46),
+(2,"Rita",40000.48),
+(3,"Pooja",878900.76),
+(4,"hritik",37850.34),
+(5,"sakshi",465500.26);
+
+SELECT emp_id,ename,salary,ABS(salary - 40000) AS abs_diff
+FROM employeess2;
+
+SELECT emp_id,ename,salary,ROUND(salary,-3) AS rounded_salary
+FROM employeess2;
+
+SELECT emp_id,ename,salary,CEIL(salary) AS ceil_salary
+FROM employeess2;
+
+SELECT emp_id,ename,salary,FLOOR(salary) AS floor_salary
+FROM employeess2;
+
+SELECT emp_id,ename,salary,MOD(salary,5000) AS remainder
+FROM employeess2;
+
+SELECT emp_id,ename,salary,POW(salary,2) AS salary_square
+FROM employeess2;
+
+SELECT emp_id,ename,salary,SQRT(salary) AS salary_sqrt
+FROM employeess2;
+
+SELECT emp_id,ename,salary,
+CASE
+WHEN salary >0 THEN 'positive'
+WHEN salary <0 THEN 'negative'
+ELSE 'zero'
+END AS salary_status
+FROM employeess2;
+
+SELECT emp_id,ename,salary,truncate(salary,2) AS truncated_salary
+FROM employeess2;
+
+SELECT emp_id,ename,salary,RAND() AS random_num
+FROM employeess2;
+
+
+
+
+
+
+

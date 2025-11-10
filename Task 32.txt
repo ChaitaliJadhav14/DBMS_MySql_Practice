@@ -1,0 +1,18 @@
+Task 32:print 8 number table by using REPEATE LOOP 
+
+use ycpdb;
+delimiter $$
+create procedure printTable(IN num INT)
+begin
+declare i int default 1;
+declare allnumber VARCHAR(255) DEFAULT "";
+lb1:REPEAT
+SET allnumber = concat(allnumber," ",num*i);
+SET i = i +1;
+UNTIL i > 10  
+END REPEAT lb1;
+select allnumber AS Table8;
+end $$
+delimiter ;
+drop procedure printTable;
+call printTable(8);

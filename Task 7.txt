@@ -1,0 +1,56 @@
+Task7: create new database with name projectDB and create table with column and with required constraint and insert data in it for table Company, Bank, Hospital, Hotel, Restaurant.
+
+create database projectDB;
+USE projectDB;
+CREATE TABLE Company (
+     Company_id INT PRIMARY KEY AUTO_INCREMENT,
+     name VARCHAR(100) NOT NULL UNIQUE,
+     industry VARCHAR(50) NOT NULL,
+     founded_year INT CHECK (founded_year >= 1800),
+     headquarters VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Company (name, industry, founded_year,headquarters) VALUES
+('TechVision','Technology',2005,'San Francisco'),
+('Medicare Inc', 'Healthcare',1998,'New York'),
+('FinTrust','Finance',1998,'Chicago');
+select * from Company;
+
+CREATE TABLE Hospital (
+     Hospital_id INT  PRIMARY KEY AUTO_INCREMENT,
+     name VARCHAR(100) NOT Null UNIQUE,
+     location VARCHAR(100) NOT Null,
+     capacity INT CHECK(capacity > 0),
+     established_year INT CHECK (established_year >= 1800)
+    );
+    INSERT INTO Hospital (name, location, capacity, established_year) VALUES
+    ('city Hospital', 'New York',500,1975),
+    ('Green Valley Medical Center', 'San Francisco',300,1985);
+select * from Hospital;
+    
+CREATE TABLE Hotel(
+     hotel_id INT PRIMARY KEY AUTO_INCREMENT,
+     name VARCHAR(100) NOT NULL UNIQUE,
+     location VARCHAR(100) NOT NULL,
+     rating DECIMAL(2,1) CHECK (rating >= 0 AND rating <=5),
+     established_year INT CHECK (established_year >=1800)
+     
+    );
+INSERT INTO Hotel (name, location, rating, established_year) VALUES
+ ('Green Palace','Las Vegas',4.5,1999),
+ ('Ocean View Resort', 'Miami',4.2,2005);
+select * from Hotel;
+CREATE TABLE Restaurant (
+    restaurant_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    cuisine VARCHAR(50) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    rating DECIMAL(2,1) CHECK (rating >= 0 AND rating <= 5),
+    hotel_id INT,
+    FOREIGN KEY (hotel_id) REFERENCES Hotel(hotel_id) ON DELETE SET NULL 
+);
+INSERT INTO Restaurant (name, cuisine,location,rating, hotel_id) VALUES
+ ('SeeBreeze Diner','Seafood','Miami Beach',4.3,2),
+ ('Royal Tandoor', 'Indian','las vegas Strip',4.6,1),
+ ('Urban Eats','Fusion','Downtown LA',4.1,NULL);
+ select * from Restaurant;

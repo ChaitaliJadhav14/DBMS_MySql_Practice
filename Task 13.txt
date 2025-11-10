@@ -1,0 +1,76 @@
+Task13: Task on join for Bank and Customer Table.
+Customer (customer_id,customer_name ,city);
+Bank (account_id ,customer_id,bank_name,balance DECIMAL(10,2),
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id));
+1.List all customers with their bank accounts (INNER JOIN)
+2.Show customers with their account balance.
+3.Find all customers who live in ‘Pune’ with their bank details.
+4.List customers who don’t have any bank account.
+5.Show all bank accounts and their customer names.
+6.Display customers with more than 50,000 balance.
+
+
+create table Customer (
+        customer_id INT PRIMARY KEY AUTO_INCREMENT,
+        customer_name VARCHAR(100) NOT NULL,
+        city VARCHAR(50) NOT NULL
+        );
+CREATE TABLE Bank(
+        account_id INT PRIMARY KEY AUTO_INCREMENT,
+        customer_id INT,
+        bank_name VARCHAR(100) NOT NULL,
+        balance DECIMAL(10,2) NOT NULL,
+        constraint fk_customer foreign key (customer_id)references
+        Customer(customer_id)on delete cascade on update cascade
+        );
+ insert into Customer (customer_name,city) VALUES
+ ('amit','mumbai'),
+ ('neha','pune'),
+ ('rahul','delhi'),
+ ('sakshi','pune'),
+ ('pratham','bangalore'),
+ ('chaitali jadhav','nagpur');
+        
+ truncate table Customer;
+        
+insert into Bank (customer_id ,bank_name,balance)values
+(1,'hdfc bank',60000.50),
+(2,'sbi bank',45000.00),
+(3, 'icici bank', 80000.00),
+(4,'axis bank',30000.00);
+        
+select c.customer_id,c.customer_name,c.city,
+		b.account_id,b.bank_name,b.balance
+from Customer c
+inner join Bank b
+on c.customer_id=b.customer_id;
+
+select c.customer_name,b.balance
+FROM Customer c
+inner join Bank b
+on c.customer_id=b.customer_id;
+
+select c.customer_name,c.city,
+		b.account_id,b.bank_name,b.balance
+from Customer c
+inner join Bank b
+on c.customer_id=b.customer_id
+WHERE c.city='pune';
+
+ select c.customer_id,c.customer_name,c.city
+ from Customer c
+ left join Bank b
+on c.customer_id=b.customer_id
+where b.account_id IS NULL ;
+
+ select b.account_id,b.bank_name,b.balance,
+ c.customer_name
+from Bank b
+inner join Customer c
+on b.customer_id=c.customer_id;
+
+select c.customer_name,b.bank_name,b.balance
+from Customer c
+inner join Bank b
+on c.customer_id=b.customer_id
+where b.balance>50000;

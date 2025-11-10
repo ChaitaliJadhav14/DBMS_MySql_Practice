@@ -1,0 +1,38 @@
+Task16: task on subquery 
+1.Find Highest Salary Employee
+From the employees table, write a query to find the employee(s) who has the maximum salary using a subquery.
+2.Find Students Above Average Marks
+From the students table, write a query to display the students who scored above the average marks.
+3.Find Employees in Same Department as 'John'
+From the employees table, write a query to display all employees who work in the same department as 'John' using a subquery.
+4.Find Products Costlier than Product 'X'
+From the products table, write a query to display products whose price is greater than the price of product 'Laptop' using a subquery.
+
+
+select* from employee;
+select emp_id,name,department , salary
+from employee
+where salary = (
+select max(salary) from employee
+);
+use chaitalijadhavdb;
+select*from students1;
+select student_id,name,department,marks
+from Students1
+where marks > (
+select avg(marks) from Students1
+);
+
+select emp_id,name,department , salary
+from employee
+where department = (
+select department from employee
+where name='john'
+);
+
+select product_id,product_name, price
+from products
+where price > (
+SELECT price FROM products
+where product_name='laptop'
+);

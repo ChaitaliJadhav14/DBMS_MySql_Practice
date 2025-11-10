@@ -1,0 +1,73 @@
+Task12: Task on join for students table and result table.
+Students (student_id , student_name ,age ,institute_id ,course );
+ Institute (institute_id  , institute_name,city);
+1.	Write a query to display the list of students along with their institute names. Only show students who are enrolled in an institute.
+2.	Write a query to display all students and their institute names. If a student is not enrolled in any institute, display "Not Assigned" in place of institute name.
+3.	Write a query to display all institutes along with the students enrolled in them. If an institute has no students, still display the institute with "No Student".
+4.	Write a query to display all students and all institutes, even if there is no matching data between them.
+5.	Write a query to display student names, course, and institute name for students who are studying in institutes located in 'Mumbai'.
+
+
+CREATE TABLE Institute (
+	institute_id INT PRIMARY KEY AUTO_INCREMENT,
+        institute_name VARCHAR(100) NOT NULL,
+        city VARCHAR(50) NOT NULL
+);
+create table Students (
+     student_id INT PRIMARY KEY AUTO_INCREMENT,
+     student_name VARCHAR(100) NOT NULL,
+     age INT CHECK(age >=15),  
+     institute_id INT,
+     course VARCHAR(100) NOT NULL,
+     CONSTRAINT fk_institute FOREIGN KEY (institute_id) REFERENCES Institute(institute_id)
+         ON DELETE SET NULL ON UPDATE CASCADE
+     );
+     INSERT INTO Institute (institute_name,city) VALUES
+     ('techno institute', 'mumbai'),
+     ('global academy', 'pune'),
+     ('national college','delhi'),
+     ('bright future' , 'mumbai'),
+     ('skyline university' , 'bangalore');
+      
+      insert into Students (student_name,age,institute_id,course) VALUES
+      ('amit',20,1,'computer science'),
+      ('neha',19,2,'mechanical engineering'),
+      ('rahul',21,1,'electronics'),
+      ('sakshi',18,4,'information technology'),
+      ('pratham',18,3,'civil engineering'),
+      ('chaitali jadhav',20,NULL, 'data analytics');
+      
+      truncate table Students;
+      
+      select s.student_id,s.student_name,s.age,s.course, i.institute_name
+      FROM students s
+      INNER JOIN Institute i
+		ON s.institute_id= i. institute_id;
+        
+        select s.student_id,s.student_name,s.age,s.course,  
+               coalesce(i.institute_name,'not assigned')AS institute_name
+        FROM Students s
+        left JOIN Institute i
+		ON s.institute_id= i. institute_id;
+        
+        select i.institute_id,i.institute_name,i.city,  
+               coalesce(s.student_name,'no s=tudent')AS student_name
+        FROM Institute i
+        left JOIN Students s
+		ON s.institute_id= i. institute_id;
+        
+      select s.student_id,s.student_name,s.course, i.institute_name
+      FROM students s
+      LEFT JOIN Institute i
+		ON s.institute_id= i. institute_id
+      UNION
+      select s.student_id,s.student_name,s.course, i.institute_name
+      FROM students s
+      RIGHT JOIN Institute i
+		ON s.institute_id= i. institute_id;
+        
+         select s.student_name,s.course, i.institute_name
+      FROM students s
+      INNER JOIN Institute i
+		ON s.institute_id= i. institute_id
+        WHERE i.city ='mumbai';

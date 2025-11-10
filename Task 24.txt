@@ -1,0 +1,22 @@
+Task24:Traffic Signal Simulation
+Input: "R", "Y", "G".
+Use CASE:
+"R" → "STOP".
+"Y" → "WAIT".
+"G" → "GO".
+Else "Invalid Signal".
+
+DELIMITER $$
+CREATE PROCEDURE Trafic1(IN Sig CHAR(1))
+BEGIN
+CASE Sig
+WHEN 'R' THEN
+SELECT 'STOP' AS Action;
+WHEN 'Y' THEN
+SELECT 'WAIT' AS Action;
+WHEN 'G' THEN
+SELECT 'GO' AS Action;
+END CASE;
+END $$
+delimiter ;
+call Trafic1('R');

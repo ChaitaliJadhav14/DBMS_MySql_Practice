@@ -1,0 +1,36 @@
+Task 36: on string built in Method
+Task1: Write a query to display all employee names in uppercase.
+
+use ycpdb;
+select * from Empployees;
+select upper(emp_name) AS uppercasename from Empployees;
+
+Task2: Write a query to display all job titles in lowercase.
+select lower(job_title) AS lowercasename from Empployees;
+
+Task3: Find the length of each employee’s name.
+select length(emp_name) AS lengthofEmployeename from Empployees;
+
+Task4: Display a column combining employee name and job title.
+select concat(emp_name,' ', job_title) AS EmpName_job from Empployees;
+
+Task5: Display only the first 4 characters of each employee’s name.
+select emp_name, substring(emp_name,1,4) from Empployees;
+
+Task6: Get the first 3 characters and the last 3 characters of each department.
+select left(department,3) AS LeftNames,right(department,3) AS RightNames from Empployees;
+
+Task7: Replace the word 'Developer' with 'Software Engineer' in job titles.
+select replace(job_title,"developer","Software Developer") from Empployees;
+
+Task8: Find the position of ‘@’ symbol in employee emails.
+select email,LOCATE('@',email) AS at_position from employee;
+
+Task9: Remove spaces (if any) from employee names.
+UPDATE employees
+SET emp_name = TRIM(emp_name);
+
+Task10: Display employee names in reverse order.
+select reverse(emp_name) AS Reversename from Empployees;
+
+

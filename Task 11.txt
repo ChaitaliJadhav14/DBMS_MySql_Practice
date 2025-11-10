@@ -1,0 +1,27 @@
+Task11:Task On JOINS Clouse:
+Departments (dept_id, dept_name) ←→ Employees (emp_id, emp_name, dept_id) 
+Q1. List all employees with their department names.
+Q2. Show all employees, even those without a department.
+Q3. Show all departments and employees assigned.
+Q4. Show all employees who do not belong to any department.
+Q5. Show all departments that have no employees assigned.
+
+use chaitalidb1;
+Database changed
+create table Departments(dept_id int primary key,dept_name varchar(50));
+insert into Departments(dept_id,dept_name)values(1,'HR'),(2,'FINANCE'),(3,'IT'),(4,'Marketing');
+select * from Departments;
+
+create table Employees(emp_id int primary key,emp_name varchar(50),dept_id int,foreign key (dept_id) references Departments(dept_id));
+insert into Employees(emp_id,emp_name,dept_id)values(101,'Chaitali',1),(102,'hritik',2),(103,'pratham',NULL),(104,'SAKSHI',3),(105,'VISHAL',NULL);
+select * from Employees;
+
+select e.emp_id,e.emp_name,d.dept_name from Employees e inner join Departments d on e.dept_id = d.dept_id;
+
+select e.emp_id,e.emp_name,d.dept_name from Employees e left join Departments d on e.dept_id = d.dept_id;
+
+select d.dept_id,d.dept_name,e.emp_id,e.emp_name from Departments d left join Employees e on d.dept_id = e.dept_id;
+
+select e.emp_id,e.emp_name from Employees e left join Departments d on e.dept_id = d.dept_id where d.dept_id IS NULL;
+
+select d.dept_id,d.dept_name from Departments d left join Employees e on d.dept_id = e.dept_id WHERE e.emp_id IS NULL;

@@ -1,0 +1,22 @@
+Task22:Age Group Categorization
+Input: age.
+If age < 13 → "Child".
+Else if age between 13–19 → "Teenager".
+Else if age between 20–59 → "Adult".
+Else → "Senior Citizen". 
+
+DELIMITER $$
+CREATE procedure Agecat1(IN age int)
+begin
+if age<13 then
+select "Child";
+elseIf age BETWEEN 13 and 19 then
+select "Teenager";
+elseIf age between 20 and 59 then
+select "Adult";
+else
+select "Senior Citizen";
+end if;
+END $$
+delimiter ;
+call AgeCat1(15);

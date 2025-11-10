@@ -1,0 +1,50 @@
+Task20: Tasks on Stored Procedure with INOUT
+1.	Increase Salary by Percentage
+Create a stored procedure IncreaseSalary(IN emp_id INT, INOUT salary DECIMAL(10,2)) that takes an employee ID and current salary, increases it by 10%, and updates the salary value in the INOUT parameter.
+2.	Check Student Marks Status
+Create a stored procedure CheckResult(IN student_id INT, INOUT status VARCHAR(20)) that checks a student’s marks from the marks table. If marks ≥ 40, update status to 'PASS', else 'FAIL'.
+
+use chaitalijadhavdb;
+delimiter $$
+
+create procedure increasesalary(
+in emp_id int,
+inout salary decimal(10,2)
+)
+begin
+set salary=salary *1.10;
+update employee2
+set salary=salary
+where employee2.emp_id=emp_id;
+end $$
+delimiter ;
+drop procedure increasesalary;
+set @current_salary=50000;
+call increasesalary(1,@current_salary);
+select @current_salary as newsalary;
+
+delimiter $$
+create procedure checkresult(
+in stud_id int,
+inout status varchar(20)
+)
+begin
+declare stud_marks int;
+
+select marks into stud_marks
+from students1
+where student_id=stud_id;
+
+if stud_marks >=40 then
+set status='pass';
+else
+set status ='fail';
+end if;
+end $$
+
+delimiter ;
+set @status ='';
+call checkresult(2,@status);  
+select @status as resultstatus;
+
+drop procedure checkresult;

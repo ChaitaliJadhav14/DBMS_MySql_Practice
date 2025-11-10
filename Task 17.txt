@@ -1,0 +1,43 @@
+Task17: Tasks on Complex Subquery
+1.	Second Highest Salary
+From the employees table, write a query to find the second highest salary using a subquery (not LIMIT).
+2.	Find Departments with More than Average Employees
+From the departments and employees tables, write a query to find the departments where employee count is more than the average employee count across all departments.
+3.	Find Students Who Scored Highest in Each Subject
+From the students and marks tables, write a query to find the student(s) with the highest marks in each subject using correlated subqueries.
+4.	Find Customers Who Ordered Products Above Average Order Value
+From the orders table, write a query to find customers who placed orders where the order total is greater than the overall average order amount.
+
+select max(salary) as second_highest_salary
+from employee
+where salary < (
+select max(salary) from employee
+);
+select department
+from employee
+group by department
+having count(*) > (
+select avg(dept_count)
+from (
+select count(*) as dept_count
+from employee
+group by department
+)as dept_counts
+);
+
+select s.student_id, s.name,m.subject,m.score
+from students s
+join marks m on s.student_id=m.student_id
+where m.score=(
+select max(m2.score)
+from marks m2
+where m2.subject=m.subject
+);
+
+select c.customer_id,c.customer_name
+from customers c
+where c.customer_id in(
+select customer_id
+from orders
+where total_amount > (select avg(total_amount)from orders)
+);

@@ -1,0 +1,27 @@
+Task21: Employee Bonus Calculation
+Input: employee salary.
+If salary > 50000 → give 20% bonus.
+Else if salary between 30000–50000 → give 10% bonus.
+Else → give 5% bonus.
+
+delimiter $$
+create procedure Emp_Salary_Bonus1(IN sal int,OUT total_salary int)
+begin
+if sal > 50000 then
+set total_salary = sal + (sal*0.20);
+elseif sal>=30000 and sal<=50000 then
+set total_salary = sal + (sal*0.10);
+else
+set total_salary = sal + (sal*0.5);
+end if;
+end $$
+delimiter ;
+set @sal = 20000;
+call Emp_Salary_Bonus1(@sal,@total_salary);
+select @total_salary;
+
+
+
+
+
+

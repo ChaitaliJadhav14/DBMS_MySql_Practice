@@ -1,0 +1,17 @@
+Task 31:print number in reverse order from 20 to 1 by using while loop
+
+use ycpdb;
+delimiter $$
+create procedure print_reverse_numbers()
+begin
+declare i int default 20;
+declare result VARCHAR(255) default '';
+lab1:WHILE i >= 1 DO
+SET result = concat(result," ", i);
+SET i = i - 1;
+END WHILE lab1;
+SELECT result AS ReverseNumber;
+END $$
+delimiter ;
+drop procedure print_reverse_numbers;
+call print_reverse_numbers();

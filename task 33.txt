@@ -1,0 +1,18 @@
+Task 33:print cube of all number from 1 to 20.
+
+use ycpdb;
+delimiter $$
+create procedure printCube(IN num INT)
+begin
+declare i int default 1;
+declare allnumber VARCHAR(255) DEFAULT "";
+lb1:REPEAT
+SET allnumber = concat(allnumber," ",i*i*i);
+SET i = i +1;
+UNTIL i > num 
+END REPEAT lb1;
+select allnumber AS squaretable;
+end $$
+delimiter ;
+drop procedure printCube;
+call printCube(20);

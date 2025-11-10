@@ -1,0 +1,17 @@
+Task 34:Write a stored procedure that accepts a number as input and uses a WHILE loop to calculate its factorial.
+
+use ycpdb;
+delimiter $$
+create procedure print_factorial(IN n INT)
+begin
+declare i int default 1;
+declare fact BIGINT default 1;
+lab1:WHILE i <= n DO
+SET fact = fact * i;
+SET i = i + 1;
+END WHILE lab1;
+SELECT fact AS Factorial_result;
+END $$
+delimiter ;
+drop procedure print_Factorial;
+call print_factorial(5);

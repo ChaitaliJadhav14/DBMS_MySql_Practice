@@ -1,0 +1,18 @@
+Task3: create new table with employee having 9 field with name id, name, post, gender, salary, state, district, age, email . insert 10 record in it. And perform insert ,update and drop operation.
+
+create table Employee(id int primary key,Name varchar(50),Post varchar(20),gender varchar(10),Salary decimal(10,2),
+State varchar(50),District varchar(60),Age int ,email varchar(100));
+INSERT INTO Employee values (1,"Chaitali","HR","Female",40000.89,"Maharashtra","Ahmednagar",23,"Chaitali@gmail.com"),
+(2,"Vishal","Developer","male",67000.89,"Maharashtra","Akola",24,"vishal@gmail.com"),
+(3,"Sakshi","Tester","Female",58620.35,"Rajasthan","Ajmer",22,"Sakshi@gmail.com"),
+(4,"Pratham","CEO","Male",52143.20,"Maharashtra","Amravati",36,"Pratham@gmail.com"),
+(5,"Pratik","Backend Developer","Male",75000.32,"Maharashtra","Beed",45,"Pratik@gmail.com"),
+(6,"Vaishnavi","HR","Female",54000.25,"Maharashtra","Buldhana",45,"Vaishnavi@gmail.com"),
+(7,"Rutuja","CEO","Female",45122.21,"Maharashtra","Pune",25,"rutuja@gmail.com"),
+(8,"Mrunal","Tester","Female",52412.32,"Maharashtra","Thane",42,"Mrunal@gmail.com"),
+(9,"Trupti","Web Developer","Female",52423.12,"Gujrat","Surat",26,"trupti@gmail.com"),
+(10,"Shilpa","HR","Female",76000.56,"Maharashtra","yavatmal",29,"Shilpa@gmail.com");
+update Employee SET Name = "Tejaswini" where id = 6;
+select * from Employee;
+drop table Employee;
+drop database chaitalijadhavdb;

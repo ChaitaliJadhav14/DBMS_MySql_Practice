@@ -1,0 +1,17 @@
+Task 30:print odd number from 1 to 30 
+
+use ycpdb;
+delimiter $$
+create procedure print_odd_numbers(IN n INT)
+begin
+declare i int default 1;
+declare result varchar(255) default '';
+WHILE i <= n DO
+SET result = concat(result," ", i);
+SET i = i + 2;
+END WHILE;
+SELECT result AS Evennumber;
+END $$
+delimiter ;
+drop procedure print_odd_numbers;
+call print_odd_numbers(30);

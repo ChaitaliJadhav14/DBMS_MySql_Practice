@@ -1,0 +1,47 @@
+Task4: create new table with name productdetails having field id, productId, pname, pprice, pcompny, pquantity, availabe for 10 products.
+-id must have primary key, pname,pcompnay,pprice must have not null,
+-add new column with name city and pincode 
+-assign different city and pincode record for it 
+-display product details whos availabe status is false 
+-display product details belong to same company.
+-remove all record from table. 
+-remove complete schema of productdetails table.
+
+use ycpdb;
+create table productDetails1(field_id int,product_id int primary key,p_name varchar(100),p_company varchar(100),p_price int not null);
+alter table productDetails1 add p_quantity int;   
+insert into productDetails1 values (101,1,"Dairy milk","cadbury",100,2);
+insert into productDetails1 values(102,2,"kitkat","Nestle",40,6),
+(103,3,"perk","cadbury",80,9),
+(104,4,"Munch","Nestle",60,8),
+(105,5,"Lays","PepsiCo",80,3),
+(106,6,"Kurkure","Pepsico",80,4),
+(107,7,"Bimgo","ITC",890,22),
+(108,8,"Pringles","Killogg's",980,6),
+(109,9,"Oreo","Mondelez Internationl",70,43),
+(110,10,"Slice","pepsiCo",54,7);
+select * from productDetails1;
+alter table productDetails1 add column city varchar(100),add column pincode varchar(6);
+select * from productDetails1;
+update productDetails1 set city = "Mumbai",pincode = 627153 where product_id = 1;
+update productDetails1 set city = "Pune",pincode = 345267 where product_id = 2;
+update productDetails1 set city = "Ahmednagar",pincode = 765432 where product_id = 3;
+update productDetails1 set city = "Jalgaon",pincode = 876567 where product_id = 4;
+update productDetails1 set city = "Nagpur",pincode = 123456 where product_id = 5;
+update productDetails1 set city = "Solapur",pincode = 657489 where product_id = 6;
+update productDetails1 set city = "654698",pincode = 847379 where product_id = 7;
+update productDetails1 set city = "Chembur",pincode = 675434 where product_id = 8;
+update productDetails1 set city = "Thane",pincode = 847379 where product_id = 7;
+update productDetails1 set city = "Supa",pincode = 847543 where product_id = 9;
+update productDetails1 set city = "Shirur",pincode = 867854 where product_id = 10;
+select * from productDetails1;
+alter table productDetails1 add available BOOlEAN DEFAULT 1;
+select * from productDetails1;
+update productDetails1 set available = 0 where product_id =1;
+update productDetails1 set available = 0 where product_id =7;
+update productDetails1 set available = 0 where product_id =9;
+select * from productDetails1;
+select * from productDetails1 where available = 0;
+select * from productDetails1 where p_company = "PepsiCo";
+Truncate table productDetails1;
+Drop table productDetails1;

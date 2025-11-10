@@ -1,0 +1,26 @@
+Task26:simple Loop to print number from 1 to 10
+
+USE ycpdb;
+select database();
+delimiter $$
+create procedure printNumber1(IN num INT)
+begin
+DECLARE i INT DEFAULT 0;
+DECLARE output VARCHAR(100);
+SET output = "";
+lab1:LOOP  
+SET i=i +1; 
+IF i>num then  
+leave lab1;
+end if;
+IF i = 5 then 
+iterate lab1;
+end if;
+SET output = concat(output,"",i);  
+end loop lab1;
+SELECT output;  
+end $$
+delimiter ;
+
+drop procedure printNumber1;
+call printNumber1(10);

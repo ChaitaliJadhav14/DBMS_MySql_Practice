@@ -1,0 +1,70 @@
+Task14: Task on Group By Clouse;
+students(student_id INT PRIMARY KEY,name VARCHAR(50),department VARCHAR(30), gender VARCHAR(10),age INT, marks INT);
+1.	Write a query to display the number of students in each department.
+2.	Write a query to find the average marks of students in each department.
+3.	Write a query to display the number of male and female students.
+4.	Write a query to find the maximum marks scored by students in each department.
+5.	Write a query to display the average age of students grouped by department and gender.
+6.	Write a query to find the total marks obtained by students in each department.
+7.	Write a query to display the minimum marks obtained by male and female students.
+8.	Write a query to count the number of students in each age group.
+9.	Write a query to display the department-wise student count and average marks.
+10.	Write a query to find the total number of students grouped by both department and age.
+
+use chaitalijadhavdb;
+create table Students1(
+student_id int primary key,
+name varchar(50),
+department varchar(30),
+gender varchar(10),
+age int,
+marks int
+);
+insert into Students1 (student_id,name,department,gender,age,marks)values
+(1,'amit sharma','computer science','male',20,85),
+(2,'neha verma','electronnics','female',21,78),
+(3,'rahul gupta','mechanical','male',22,90),
+(4,'sakshi mehta','computer science','female',19,92),
+(5,'pratham joshi','civil','male',23,74);
+   
+   
+select department,count(*) as student_count
+from Students1
+group by department;
+
+select department,avg(marks) as avg_marks
+from Students1
+group by department;
+
+select gender,count(*) as student_count
+from Students1
+group by gender;
+
+select department,max(marks) as max_marks
+from Students1
+group by department;
+
+select department, gender,avg(age) as avg_age
+from Students1
+group by department,gender;
+
+select department,sum(marks) as total_marks
+from Students1
+group by department;
+
+select gender,min(marks) as min_marks
+from Students1
+group by gender;
+
+select age,count(*) as student_count
+from Students1
+group by age;
+
+select department,count(*) as student_count,
+				 avg(marks) as averge_marks
+from Students1
+group by department;
+
+select department,age,count(*) as student_count
+from Students1
+group by department,age;

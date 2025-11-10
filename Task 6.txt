@@ -1,0 +1,4 @@
+Task6: By using alias concept display salary column data under emp_salary column name .
+
+use ycpdb;
+select salary AS emp_salary from employees;

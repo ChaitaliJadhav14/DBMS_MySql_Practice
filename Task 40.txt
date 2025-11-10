@@ -1,0 +1,42 @@
+40.Task: task on mongodb
+1.create product table having pid,pname,pprice,pcompany,pmodel,availablestatus,pquantity field. 
+2.insert record for 10 product.
+3.display all product information 
+4.display last 3 record 
+5.display first 2 record 
+6.update record with pid 8 
+7.insert new single record.
+8.delete record with pid 9 
+9.delete table.
+10.delete database.
+
+use productdatabase;
+
+db.createCollection("product");
+
+db.product.insertMany([])
+ 
+let myArray=[{pid:101,pname:"Laptop",pprice:55000,pcompany:"Dell",pmodel:"Inspiron15",availablestatus:true,pquantity:12},
+{pid:102,pname:"Mobile",pprice:22000,pcompany:"Samsung",pmodel:"GalaxyA52",availablestatus:true,pquantity:30},
+{pid:103,pname:"Tablet",pprice:18000,pcompany:"Lenovo",pmodel:"TabM10",availablestatus:true,pquantity:15},
+{pid:104,pname:"Smartwatch",pprice:12000,pcompany:"Apple",pmodel:"WatchSE",availablestatus:true,pquantity:8},
+{pid:105,pname:"Headphones",pprice:4000,pcompany:"Sony",pmodel:"WH1000",availablestatus:true,pquantity:25},
+{pid:106,pname:"Monitor",pprice:15000,pcompany:"LG",pmodel:"UltraGear",availablestatus:true,pquantity:10},
+{pid:107,pname:"Keyboard",pprice:15000,pcompany:"Logitech",pmodel:"K120",availablestatus:true,pquantity:40},
+{pid:108,pname:"Mouse",pprice:800,pcompany:"HP",pmodel:"M100",availablestatus:true,pquantity:35},
+{pid:109,pname:"Printer",pprice:12000,pcompany:"Canon",pmodel:"PIXMA",availablestatus:true,pquantity:7},
+{pid:110,pname:"Camera",pprice:45000,pcompany:"Nikon",pmodel:"D3500",availablestatus:true,pquantity:5}
+]
+
+db.product.insertMany(myArray)
+db.product.find()
+db.product.find().sort({pid: -1}).limit(3)
+db.product.find().sort({pid: -1}).limit(2)
+db.product.updateOne({pid:8},{$set:{pprice:900,pquantity:50}})
+db.product.find()
+db.product.insertOne({pid:111,pname:"Speaker",pprice:3000,pcompany:"JBL",pmodel:"Flip5",availablestatus:true,pquantity:20})
+db.product.deleteOne({pid:9})
+db.product.drop()
+db.dropDatabase()
+
+

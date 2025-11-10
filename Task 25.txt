@@ -1,0 +1,58 @@
+Task on LIKE operator
+Task25: Task on LIKE operator for a customer table.
+1.Write a query to display customers whose name starts with 'A'.
+2.Write a query to display customers whose city ends with 'pur' (like Jaipur, Nagpur, Kanpur).
+3.Write a query to display customers whose email contains 'gmail'.
+4.Write a query to display customers whose name has 'an' in it (like Rohan, Ankit, Manish).
+5.Write a query to display customers whose phone number starts with '98'.
+6.Write a query to display customers whose name is exactly 5 characters long.
+7.Write a query to display customers whose city name has second character 'a' (like 'Nagpur', 'Bangalore').
+
+
+use ycpdb;
+CREATE table customer2(
+	cust_id INT PRIMARY KEY,
+    cname VARCHAR(50),
+    city VARCHAR(50),
+    email VARCHAR(100),
+    phone VARCHAR(15)
+    );
+
+INSERT INTO customer2(cust_id,cname,city,email,phone)values
+(1,"Chaitali","Jaipur","chaitali@gmail.com","9767554676"),
+(2,"Sakshi","Nagpur","sakshi@gmail.com","9867554676"),
+(3,"hritik","Mumbai","hritik@gmail.com","9767554676"),
+(4,"Rohan","Bangalore","rohan@gmail.com","9767554676"),
+(5,"Akash","Pune","akash@gmail.com","9767554676");
+
+SELECT * FROM customer2
+WHERE cname LIKE 'A%';
+
+SELECT * FROM customer2
+WHERE city LIKE '%pur';
+
+SELECT * FROM customer2
+WHERE email LIKE '%gmail%';
+
+SELECT * FROM customer2
+WHERE cname LIKE '%an%';
+
+SELECT * FROM customer2
+WHERE phone LIKE '98%';
+
+SELECT * FROM customer2
+WHERE cname LIKE '_____';
+
+SELECT * FROM customer2
+WHERE city LIKE '_a%';
+
+
+
+
+
+
+
+
+
+
+

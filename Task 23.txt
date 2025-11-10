@@ -1,0 +1,24 @@
+Task23: Electricity Bill Calculation
+Input: number of units consumed.
+If units <= 100 → ₹5 per unit.
+Else if units <= 300 → ₹7 per unit.
+Else → ₹10 per unit.
+
+delimiter $$
+create procedure billcal4(IN units INT,OUT total INT)
+begin
+IF units <= 100 then
+set total = units*5;
+elseif units<=300 then
+set total = units*7;
+else
+set total = units*10;
+end if;
+END $$
+
+delimiter ;
+SET @bill = 0;
+
+call billcal4(500,@bill);
+
+mysql> select @bill AS Total_Bill;

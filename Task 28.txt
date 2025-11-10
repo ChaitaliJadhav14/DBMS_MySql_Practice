@@ -1,0 +1,18 @@
+Task28: By using REAPTE loop print square of number from 1 to 5.
+
+use ycpdb;
+delimiter $$
+create procedure printSquare1(IN num INT)
+begin
+declare i int default 1;
+declare allnumber VARCHAR(255) DEFAULT "";
+lb1:REPEAT
+SET allnumber = concat(allnumber," ",i*i);
+SET i = i +1;
+UNTIL i > num 
+END REPEAT lb1;
+select allnumber AS squaretable;
+end $$
+delimiter ;
+drop procedure printSquare1;
+call printSquare1(5);

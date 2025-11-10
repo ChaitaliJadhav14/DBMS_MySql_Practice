@@ -1,0 +1,24 @@
+Task 39: create new database in mongodb with name projectdatabase. create collection with name students having stdid,stdname,stdcontact,stdgender,stdage,stdaddress,stdgrade field and insert data for 10 students
+
+use projectdatabase;
+
+db.createCollection("Students");
+
+db.Students.insertOne({stdid:101,stdname:"Chaitali",stdcontact:987654354654,stdgender:"female",stdage:22,stdaddress:"Ahmednagar",stdgrade:"B"})
+
+db.Students.insertMany([])
+
+ 
+let myArray=[{stdid:102,stdname:"Rita",stdcontact:8767564534,stdgender:"female",stdage:23,stdaddress:"Jalgaon",stdgrade:"c"},
+{stdid:103,stdname:"Vaishanavi",stdcontact:7865434534,stdgender:"female",stdage:25,stdaddress:"parner",stdgrade:"d"},
+{stdid:104,stdname:"tejaswini",stdcontact:9877564534,stdgender:"female",stdage:26,stdaddress:"Nagpur",stdgrade:"B"},
+{stdid:105,stdname:"Pragati",stdcontact:7654434534,stdgender:"female",stdage:22,stdaddress:"Supa",stdgrade:"d"},
+{stdid:106,stdname:"Sakshi",stdcontact:98776784534,stdgender:"female",stdage:22,stdaddress:"Pune",stdgrade:"A"},
+{stdid:107,stdname:"Swati",stdcontact:7654438734,stdgender:"female",stdage:20,stdaddress:"Shirur",stdgrade:"d"},
+{stdid:108,stdname:"Shilpa",stdcontact:7776784534,stdgender:"female",stdage:24,stdaddress:"Palve",stdgrade:"B"},
+{stdid:109,stdname:"Komal",stdcontact:6754438734,stdgender:"female",stdage:20,stdaddress:"Chandrapur",stdgrade:"d"},
+{stdid:109,stdname:"Mayur",stdcontact:8976784534,stdgender:"male",stdage:17,stdaddress:"Mumbai",stdgrade:"A"}]
+
+db.Students.insertMany(myArray)
+
+db.Students.find()

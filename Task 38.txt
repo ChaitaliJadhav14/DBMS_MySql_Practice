@@ -1,0 +1,54 @@
+Task38: Assignments on date Functions in MySQL
+Task1: Display the current date.
+Task2: Display the current date and time.
+Task3: Find the year of joining (hire_date) for each employee.
+Task4: Find the month number and month name of joining.
+Task5: Find the day number and day name of joining.
+Task6: Find how many days each employee has worked until today.
+Task7: Find how many years each employee has worked until today.
+Task8: Find the last day of the month in which employee was hired.
+
+use ycpdb;
+CREATE TABLE employeess3(
+	emp_id INT PRIMARY KEY,
+    ename VARCHAR(50),
+    salary DECIMAL(10,2),
+    hire_date DATE);
+INSERT INTO employeess3(emp_id,ename,salary,hire_date) VALUES
+(1,"Chaitali",38856.98,'2025-03-15'),
+(2,"Sakshi",68734.38,'2018-07-20'),
+(3,"Shilpa",37986.32,'2012-11-05'),
+(4,"Hritik",4700056.48,'2020-01-25'),
+(5,"Rohan",39876.98,'2010-06-10');
+
+SELECT * FROM employeess3;
+SELECT CURDATE() AS today;
+SELECT NOW() AS current_datetime;
+
+SELECT emp_id,ename,hire_date,
+	YEAR(hire_date) AS joining_year
+FROM employeess3;
+
+SELECT emp_id,ename,hire_date,
+	MONTH(hire_date) AS month_number,
+    monthname(hire_date) as month_name
+FROM employeess3;
+
+SELECT emp_id,ename,hire_date,
+	DAY(hire_date) AS day_number,
+    dayname(hire_date) as day_name
+FROM employeess3;
+
+SELECT emp_id,ename,hire_date,
+	datediff(CURDATE(),hire_date) AS day_worked
+FROM employeess3;
+
+SELECT emp_id,ename,hire_date,
+	timestampdiff(YEAR,hire_date,CURDATE()) AS year_worked
+FROM employeess3;
+
+SELECT emp_id,ename,hire_date,
+	LAST_DAY(hire_date) AS last_day_of_month
+FROM employeess3;
+
+

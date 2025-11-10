@@ -1,0 +1,26 @@
+Task8: create three tables with name students, courses and enrollment for online course management system and implement parent child relation between students and courses table by using foreign key concept.
+
+create database OnCorMgtSystem;
+use OnCorMgtSystem;
+create table Students(student_id int AUTO_INCREMENT primary key,name varchar(50),email varchar(100) UNIQUE,is_active boolean default 1);
+INSERT INTO Students values(101,"Chaitali","chaitali@gmail.com",1);
+INSERT INTO Students values(102,"Rita","rita@gmail.com",1);
+INSERT INTO Students values(103,"hritik","hritik@gmail.com",0),(104,"shilpa","shilpa@gmail.com",1),(105,"shradha","shradha@gmail.com",0),
+(106,"mayur","mayur@gmail.com",1),(107,"sakshi","sakshi@gmail.com",1),(108,"vishal","vishal@gmail.com",1),(109,"yash","yash@gmail.com",1),
+(110,"shree","shree@gmail.com",1);
+
+select * from Students;
+
+ create table Courses(course_id int AUTO_INCREMENT primary key,course_name varchar(100) NOT NULL,duration_months int not null);
+INSERT INTO Courses values(1,"DATA Analytics",12),(2,"CDAC",6),(3,"Python",9),(4,"Web development",6),(5,"Software testing course",10),
+(6,"database",5),(7,"Iot",9),(8,"DMC",7),(9,"JAVA",6),(10,"Mysql",12),(11,"php",7),(12,"JEE",6);
+select * from Courses;
+
+create table Enrollment(enrollment_id int AUTO_INCREMENT primary key,student_id int,foreign key(student_id) references Students(student_id),
+course_id int,foreign key(course_id) references Courses(course_id));
+alter table Enrollment add is_completed BOOLEAN default false;
+select * from Enrollment;
+INSERT INTO Enrollment values(1001,101,1,TRUE),(1002,105,6,True),(1003,104,5,false),(1004,108,6,true),(1005,103,10,false),
+(1006,107,8,true),(1007,101,9,false),(1008,106,7,true),(1009,104,6,true),(1010,102,12,false);
+
+select * from Enrollment;

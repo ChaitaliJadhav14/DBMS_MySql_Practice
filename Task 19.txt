@@ -1,0 +1,29 @@
+Task19:Tasks on Stored Procedure with OUT
+1.	Find Maximum Salary
+Create a stored procedure GetMaxSalary(OUT max_sal DECIMAL(10,2)) that finds the highest salary from the employees table and stores it in the OUT parameter.
+2.	Count Total Students
+Create a stored procedure CountStudents(OUT total_students INT) that returns the total number of students in the students table.
+
+use chaitalijadhavdb;
+delimiter $$
+
+create procedure getmaxsalary (out max_sal decimal(10,2))
+begin
+select max(salary)into max_sal
+from employee;
+end$$
+delimiter ;
+call getmaxsalary(@highest);
+select @highest as maxsalary;
+drop procedure getmaxsalary;
+
+delimiter $$
+create procedure countstudents(out total_students int)
+begin
+select count(*)into total_students
+from students1;
+end$$
+delimiter ;
+call countstudents(@studcount);
+select @studcount as totalstudents;
+drop procedure countstudents;
