@@ -1,0 +1,11 @@
+Task2: create a table with name friendList having id, name, and contact, address column name and insert 7 record in it.
+
+create table FriendList3(id int primary key,Name Varchar(50),contact BIGINT,address varchar(200));
+INSERT INTO FriendList3 values (1,"Chaitali",9307180359,"Ahmednagar"),
+(2,"Sakshi",8787654354,"pune"),
+(3,"Shilpa",6785365786,"Mumbai"),
+(4,"Mayur",9878654345,"Solapur"),
+(5,"Vishal",6789542136,"Jalgaon"),
+(6,"Shradha",8542632564,"Dhule"),
+(7,"Tejaswini",7807180359,"Navi Mumbai");
+select * from FriendList3;
