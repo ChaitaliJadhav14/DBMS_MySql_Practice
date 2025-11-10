@@ -1,4 +1,4 @@
-# 🗄️ DBMS & MySQL Practical Tasks — PG-DAC
+# 🗄️ DBMS & MySQL Practice Tasks
 
 This repository contains 40 practical MySQL tasks performed during my PG-DAC (Post Graduate Diploma in Advanced Computing) course.  
 Each task file demonstrates a key concept from Database Management Systems (DBMS) using MySQL — including database design, SQL commands, normalization, joins, stored procedures, triggers, and more.
